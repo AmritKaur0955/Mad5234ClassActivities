@@ -1,0 +1,125 @@
+//Test implentations are written below:-
+package Calculator;
+
+import java.util.Scanner;
+import static org.junit.Assert.*;   
+import org.junit.Test;  
+
+public class Calculator1 {
+  public static void main(String[] args) {
+	  Scanner commandLineArgs = new Scanner(System.in);
+	  Calculations c = new Calculations(commandLineArgs);
+	  // TODO: parse command line parameters to determine
+	  // operation and operands
+	  // good design pattern:
+	  // let's make a operations manager class to control
+	  // the flow of execution according to the operation the user specified.
+	  c.add(2, 2);
+	  
+	  System.out.println("fini");
+  }
+}
+
+class Calculations{
+	Scanner input;
+	public Calculations(Scanner inp1) {
+		this.input = inp1; 
+	}
+	
+	public static int add(int input1, int input2) {
+		return input1 + input2;
+	}
+	
+	public static int subtract(int input1, int input2) {
+		return input1 - input2;
+	}
+	
+	public static int multiply(int input1, int input2) {
+		return input1 * input2;
+	}
+	
+	public static int divide(int input1, int input2) {
+		return input1 / input2;
+	}
+	
+	public static int exponentiate(int input1, int input2) {
+		// #TODO you implement this algorithm
+		// by making calls to your multiply method
+		return input1 * input2 ;
+	}
+	
+}
+
+//Implementation Tests
+
+
+package Calculator;
+import static org.junit.Assert.*;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;  
+
+
+
+public class TestLogic {
+	
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+		System.out.println("Before Class");
+	}
+	
+	@Before
+	public void setUp() throws Exception {
+		System.out.println("Before");
+	}
+	
+	
+	@Test
+	public void testAdd() {
+		System.out.println("Test add calculation");
+		assertEquals(3, Calculations.add(1,2));
+		
+	}
+	
+	@Test
+	public void testSubtract() {
+		System.out.println("Test subtract calculation");
+		assertEquals(3, Calculations.subtract(5,2));
+		
+	}
+	
+	
+	@Test
+	public void testMultiply() {
+		System.out.println("Test multiply calculation");
+		assertEquals(3, Calculations.multiply(1,3));
+		
+	}
+	
+	@Test
+	public void testDivide() {
+		System.out.println("Test divide calculation");
+		assertEquals(3, Calculations.divide(9,3));
+		
+	}
+	
+	@Test
+	public void testExponentiate() {
+		System.out.println("Test exponentiate calculation");
+		assertEquals(4, Calculations.exponentiate(2,2));
+		
+	}
+	
+	@After
+	public void setUpAfter() throws Exception {
+		System.out.println("After");
+	}
+	
+	@AfterClass
+	public static void setUpAfterClass() throws Exception {
+		System.out.println("After Class");
+	}
+
+}
